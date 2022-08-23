@@ -1,1 +1,7 @@
-# jassu-web2
+# Jassu web
+
+## Sovelluksen käynnistys
+```
+npm install
+npm start
+```
