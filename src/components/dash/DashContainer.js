@@ -3,7 +3,7 @@ import { path } from 'ramda'
 import { connect } from 'react-redux'
 import GoogleLogin from 'react-google-login'
 
-import { login, autoLogin, update, googleLoginError } from '../user/userActions'
+import { login, update, googleLoginError } from '../user/userActions'
 import UpdateUserForm from '../user/UpdateUserForm'
 
 const DashContainer = props => (

@@ -4,7 +4,6 @@ import { Navigate, NavLink } from 'react-router-dom'
 import { path, pathOr } from 'ramda'
 
 import { init, getGames, deleteGame, getLog, getReplay, restoreGame } from './kirvesActions'
-import { autoLogin } from '../user/userActions'
 import { check, del, view, SvgImage } from '../shared/images'
 import { formatString } from '../shared/dateFormat'
 import translate from '../shared/translate'
