@@ -1,4 +1,4 @@
-# Jassu web
+# Kirvespeli web
 
 ## Sovelluksen käynnistys
 ```

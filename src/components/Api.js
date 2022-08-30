@@ -12,7 +12,7 @@ export const getPayload = props => ({
     url: props.url,
     method: 'get',
     headers: {
-      Authorization: localStorage.getItem('jassu-token')
+      Authorization: localStorage.getItem('kirves-token')
     }
   }
 })
@@ -23,7 +23,7 @@ export const postPayload = props => ({
     method: 'post',
     data: props.data,
     headers: {
-      Authorization: localStorage.getItem('jassu-token')
+      Authorization: localStorage.getItem('kirves-token')
     }
   }
 })
@@ -34,7 +34,7 @@ export const putPayload = props => ({
     method: 'put',
     data: props.data,
     headers: {
-      Authorization: localStorage.getItem('jassu-token')
+      Authorization: localStorage.getItem('kirves-token')
     }
   }
 })
@@ -44,7 +44,7 @@ export const deletePayload = props => ({
     url: props.url,
     method: 'delete',
     headers: {
-      Authorization: localStorage.getItem('jassu-token')
+      Authorization: localStorage.getItem('kirves-token')
     }
   }
 })

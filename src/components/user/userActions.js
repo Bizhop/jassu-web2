@@ -15,7 +15,7 @@ export const UPDATE_FAILURE = 'user/UPDATE_FAIL'
 
 export const autoLogin = () => ({
   type: AUTO_LOGIN,
-  payload: loginPayload({tokenId: localStorage.getItem('jassu-token')})
+  payload: loginPayload({tokenId: localStorage.getItem('kirves-token')})
 })
 
 export const googleLoginError = error => ({

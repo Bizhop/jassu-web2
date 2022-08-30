@@ -8,11 +8,11 @@ const initialState = {
 }
 
 const saveToken = user => {
-  localStorage.setItem("jassu-token", user.jwt)
+  localStorage.setItem("kirves-token", user.jwt)
 }
 
 const resetToken = () => {
-  localStorage.removeItem("jassu-token")
+  localStorage.removeItem("kirves-token")
 }
 
 const userReducer = (state = initialState, action) => {
