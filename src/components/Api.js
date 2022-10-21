@@ -2,7 +2,7 @@ export const loginPayload = props => ({
   request: {
     url: 'api/auth',
     headers: {
-      Authorization: props.tokenId
+      Authorization: props.credential
     }
   }
 })

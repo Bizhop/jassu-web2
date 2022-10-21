@@ -13,11 +13,13 @@
     "redux-devtools-extension": "^2.13.9"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.2.8",
     "axios": "^0.27.2",
+    "lodash": "^4.17.21",
     "ramda": "^0.28.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-google-login": "^5.2.2",
+    "react-final-form": "^6.5.9",
     "react-redux": "^8.0.2",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
@@ -25,7 +27,6 @@
     "react-stomp": "^5.1.0",
     "redux": "^4.2.0",
     "redux-axios-middleware": "^4.0.1",
-    "redux-form": "^8.3.8",
     "serve": "^14.0.1"
   },
   "targets": {
@@ -36,7 +37,7 @@
     }
   },
   "engines": {
-    "node": "17.8.x",
-    "npm": "8.5.x"
+    "node": ">= 17",
+    "npm": ">= 8"
   }
 }

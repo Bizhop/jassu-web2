@@ -25,7 +25,7 @@ export const googleLoginError = error => ({
 
 export const login = params => ({
   type: LOGIN_REQUEST,
-  payload: loginPayload({tokenId: params.tokenId})
+  payload: loginPayload(params)
 })
 
 export const logout = () => ({

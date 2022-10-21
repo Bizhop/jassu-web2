@@ -5,6 +5,7 @@ import Header from './shared/Header'
 import DashContainer from './dash/DashContainer'
 import KirvesContainer from './kirves/KirvesContainer'
 import KirvesGame from './kirves/KirvesGame'
+import { GoogleOAuthProvider } from '@react-oauth/google'
 
 const NotFound = () => (
   <div className="container">
@@ -26,10 +27,14 @@ const MyRoutes = () => (
 )
 
 const App = () => (
-  <div className="app">
-    <Header />
-    <MyRoutes />
-  </div>
+  <GoogleOAuthProvider
+    clientId="266150004835-ijh2ibgdsa9timu7cmak0udc76hnhldb.apps.googleusercontent.com"
+  >
+    <div className="app">
+      <Header />
+      <MyRoutes />
+    </div>
+  </GoogleOAuthProvider>
 )
 
 export default App
