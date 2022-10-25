@@ -26,10 +26,5 @@ export const SvgImage = props => {
     return null
   }
   const image = require(`../../assets/${props.name}.svg`)
-  return (
-    <img
-      {...props}
-      src={image}
-    />
-  )
+  return <img {...props} src={image} />
 }
