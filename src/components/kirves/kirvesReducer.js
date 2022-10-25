@@ -1,5 +1,5 @@
-import { path, pathOr, pick, map, reject } from 'ramda'
-import { UPDATE_FAILURE } from '../user/userActions'
+import { path, pathOr, pick, map, reject } from "ramda"
+import { UPDATE_FAILURE } from "../user/userActions"
 
 import {
   INIT_FAILURE,
@@ -19,19 +19,19 @@ import {
   GET_REPLAY,
   INIT_SUCCESS,
   RESTORE_GAME_SUCCESS,
-  GET_GAMES
-} from './kirvesActions'
+  GET_GAMES,
+} from "./kirvesActions"
 
 const initialState = {
   game: null,
   games: [],
   cardsVisible: false,
-  logId: '',
+  logId: "",
   logItems: [],
   logVisible: false,
   replay: null,
   selectedLogIndex: 0,
-  gamesFetched: false
+  gamesFetched: false,
 }
 
 const kirvesReducer = (state = initialState, action) => {
@@ -40,26 +40,26 @@ const kirvesReducer = (state = initialState, action) => {
       return {
         ...state,
         game: action.payload.data,
-        cardsVisible: false
+        cardsVisible: false,
       }
     case GET_GAMES:
       return {
         ...state,
-        gamesFetched: true
+        gamesFetched: true,
       }
     case GET_GAMES_SUCCESS:
     case INIT_SUCCESS:
       return {
         ...state,
         games: map(
-          pick(['id', 'canJoin', 'players', 'lastHandId', 'createdAt', 'admin']),
-          action.payload.data,
+          pick(["id", "canJoin", "players", "lastHandId", "createdAt", "admin"]),
+          action.payload.data
         ),
         logVisible: false,
         logItems: [],
-        logId: '',
+        logId: "",
         replay: null,
-        selectedLogIndex: 0
+        selectedLogIndex: 0,
       }
     case DELETE_GAME_SUCCESS:
       return {
@@ -79,17 +79,17 @@ const kirvesReducer = (state = initialState, action) => {
         logVisible: true,
       }
     case GET_LOG_FAILURE:
-      alert(path(['error', 'response', 'data', 'message'], action))
+      alert(path(["error", "response", "data", "message"], action))
       return {
         ...state,
         logItems: [],
         logVisible: false,
-        logId: '',
+        logId: "",
       }
     case GET_REPLAY:
       return {
         ...state,
-        selectedLogIndex: pathOr(0, ['params', 'index'], action),
+        selectedLogIndex: pathOr(0, ["params", "index"], action),
       }
     case GET_REPLAY_SUCCESS:
       return {
@@ -107,14 +107,14 @@ const kirvesReducer = (state = initialState, action) => {
         cardsVisible: true,
       }
     case RESTORE_GAME_SUCCESS:
-      alert('Pelitilanne palautettu')
+      alert("Pelitilanne palautettu")
       return {
         ...state,
         logItems: [],
         logVisible: false,
-        logId: '',
+        logId: "",
         replay: null,
-        game: null
+        game: null,
       }
     case JOIN_GAME_FAILURE:
     case ACTION_FAILURE:
@@ -122,7 +122,7 @@ const kirvesReducer = (state = initialState, action) => {
     case GET_GAMES_FAILURE:
     case GET_GAME_FAILURE:
     case UPDATE_FAILURE:
-      alert(path(['error', 'response', 'data', 'message'], action))
+      alert(path(["error", "response", "data", "message"], action))
       return state
     default:
       return state

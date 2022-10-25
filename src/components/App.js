@@ -1,13 +1,13 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import React from "react"
+import { Route, Routes } from "react-router-dom"
 import { Provider } from "react-redux"
 import { HashRouter as Router } from "react-router-dom"
 
-import Header from './shared/Header'
-import DashContainer from './dash/DashContainer'
-import KirvesContainer from './kirves/KirvesContainer'
-import KirvesGame from './kirves/KirvesGame'
-import { GoogleOAuthProvider } from '@react-oauth/google'
+import Header from "./shared/Header"
+import DashContainer from "./dash/DashContainer"
+import KirvesContainer from "./kirves/KirvesContainer"
+import KirvesGame from "./kirves/KirvesGame"
+import { GoogleOAuthProvider } from "@react-oauth/google"
 import Store from "../Store"
 
 const NotFound = () => (
@@ -30,9 +30,7 @@ const MyRoutes = () => (
 const App = () => (
   <Provider store={Store()}>
     <Router>
-      <GoogleOAuthProvider
-        clientId="266150004835-ijh2ibgdsa9timu7cmak0udc76hnhldb.apps.googleusercontent.com"
-      >
+      <GoogleOAuthProvider clientId="266150004835-ijh2ibgdsa9timu7cmak0udc76hnhldb.apps.googleusercontent.com">
         <Header />
         <MyRoutes />
       </GoogleOAuthProvider>

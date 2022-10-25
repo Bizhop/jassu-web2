@@ -1,13 +1,13 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Navigate, NavLink } from 'react-router-dom'
-import { path, pathOr } from 'ramda'
+import React from "react"
+import { connect } from "react-redux"
+import { Navigate } from "react-router-dom"
+import { path, pathOr } from "ramda"
 
-import { init, getGames, deleteGame, getLog, getReplay, restoreGame } from './kirvesActions'
-import { check, del, view, SvgImage } from '../shared/images'
-import { formatString } from '../shared/dateFormat'
-import translate from '../shared/translate'
-import RenderGame from './renderGame'
+import { init, getGames, deleteGame, getLog, getReplay, restoreGame } from "./kirvesActions"
+import { check, view, SvgImage } from "../shared/images"
+import translate from "../shared/translate"
+import RenderGame from "./renderGame"
+import KirvesGames from "./KirvesGames"
 
 const KirvesContainer = props => (
   <div className="container">
@@ -22,50 +22,12 @@ const KirvesContainer = props => (
         <SvgImage name="refresh" width="20" height="20" onClick={() => props.getGames()} />
       </div>
     </div>
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th>Peli</th>
-          <th>Pvm</th>
-          <th>Pelaajia</th>
-          <th>Voi liittyä</th>
-          <th />
-          <th />
-        </tr>
-      </thead>
-      <tbody>
-        {props.games.map(game => (
-          <tr key={`game-${game.id}`}>
-            <td>
-              <NavLink
-                to={`/kirves/${game.id}`}
-                className="nav-link nav-item"
-              >
-                {game.id}
-              </NavLink>
-            </td>
-            <td>{formatString(game.createdAt)}</td>
-            <td>{game.players}</td>
-            <td>{game.canJoin && <img src={check} width="10" height="10" />}</td>
-            <td>
-              {props.user.email === game.admin.email && (
-                <SvgImage
-                  name="log"
-                  width="30"
-                  height="30"
-                  onClick={() => props.getLog({ gameId: game.id, handId: game.lastHandId })}
-                />
-              )}
-            </td>
-            <td>
-              {props.user.email === game.admin.email && (
-                <img src={del} width="10" height="10" onClick={() => props.deleteGame(game.id)} />
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <KirvesGames
+      games={props.games}
+      user={props.user}
+      getLog={props.getLog}
+      deleteGame={props.deleteGame}
+    />
     {props.logVisible && (
       <div>
         <h2>
@@ -89,17 +51,17 @@ const KirvesContainer = props => (
                 <td>
                   {(() => {
                     switch (item.input.action) {
-                      case 'PLAY_CARD':
-                      case 'DISCARD':
+                      case "PLAY_CARD":
+                      case "DISCARD":
                         return `index=${item.input.index}`
-                      case 'ACE_OR_TWO_DECISION':
-                        return item.input.keepExtraCard ? 'Pidetty' : 'Hylätty'
-                      case 'SPEAK':
+                      case "ACE_OR_TWO_DECISION":
+                        return item.input.keepExtraCard ? "Pidetty" : "Hylätty"
+                      case "SPEAK":
                         return translate(item.input.speak)
-                      case 'SPEAK_SUIT':
+                      case "SPEAK_SUIT":
                         return translate(item.input.suit)
                       default:
-                        return ''
+                        return ""
                     }
                   })()}
                 </td>
@@ -156,15 +118,15 @@ const KirvesContainer = props => (
 )
 
 const mapStateToProps = state => ({
-  user: path(['user'], state),
-  error: path(['user', 'error'], state),
-  games: path(['kirves', 'games'], state),
-  logItems: pathOr([], ['kirves', 'logItems'], state),
-  logVisible: path(['kirves', 'logVisible'], state),
-  logId: path(['kirves', 'logId'], state),
-  replay: path(['kirves', 'replay'], state),
-  selectedLogIndex: pathOr(0, ['kirves', 'selectedLogIndex'], state),
-  gamesFetched: pathOr(false, ['kirves', 'gamesFetched'], state)
+  user: path(["user"], state),
+  error: path(["user", "error"], state),
+  games: path(["kirves", "games"], state),
+  logItems: pathOr([], ["kirves", "logItems"], state),
+  logVisible: path(["kirves", "logVisible"], state),
+  logId: path(["kirves", "logId"], state),
+  replay: path(["kirves", "replay"], state),
+  selectedLogIndex: pathOr(0, ["kirves", "selectedLogIndex"], state),
+  gamesFetched: pathOr(false, ["kirves", "gamesFetched"], state),
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -174,10 +136,7 @@ const mapDispatchToProps = dispatch => ({
   getReplay: params => dispatch(getReplay(params)),
   restoreGame: params => dispatch(restoreGame(params)),
   setCurrentGameId: gameId => dispatch(setCurrentGameId(gameId)),
-  getGames: () => dispatch(getGames())
+  getGames: () => dispatch(getGames()),
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(KirvesContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(KirvesContainer)
