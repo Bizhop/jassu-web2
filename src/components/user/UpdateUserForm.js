@@ -1,7 +1,7 @@
-import React from 'react'
-import { Field, Form } from 'react-final-form'
+import React from "react"
+import { Field, Form } from "react-final-form"
 
-import { RenderTextInput } from '../shared/FormInput'
+import { RenderTextInput } from "../shared/FormInput"
 
 const UpdateUserForm = props => (
   <Form onSubmit={props.onSubmit} initialValues={props.user}>

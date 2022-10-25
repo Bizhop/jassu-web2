@@ -1,9 +1,9 @@
-import React from 'react'
-import { path } from 'ramda'
-import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
+import React from "react"
+import { path } from "ramda"
+import { NavLink } from "react-router-dom"
+import { connect } from "react-redux"
 
-import { logout } from '../user/userActions'
+import { logout } from "../user/userActions"
 
 const Header = props => (
   <div>
@@ -36,14 +36,11 @@ const Header = props => (
 )
 
 const mapStateToProps = state => ({
-  loggedIn: path(['user', 'email'], state),
+  loggedIn: path(["user", "email"], state),
 })
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

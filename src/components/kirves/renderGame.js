@@ -1,8 +1,8 @@
-import React from 'react'
-import { includes } from 'ramda'
+import React from "react"
+import { includes } from "ramda"
 
-import { SvgImage, view, check } from '../shared/images'
-import translate from '../shared/translate'
+import { SvgImage, view, check } from "../shared/images"
+import translate from "../shared/translate"
 
 const Cards = props => {
   const s = props.scale || 1
@@ -37,9 +37,9 @@ const Cards = props => {
 const BackCard = props => {
   if (props.lastCard) {
     setTimeout(() => {
-      const element = document.getElementsByClassName('last-card')[0]
+      const element = document.getElementsByClassName("last-card")[0]
       if (element) {
-        element.classList.remove('last-card')
+        element.classList.remove("last-card")
       }
     }, 1500)
     return (
@@ -54,9 +54,9 @@ const BackCard = props => {
 
 function hideForSeconds(event, time) {
   const element = event.target
-  element.classList.add('hidden')
+  element.classList.add("hidden")
   setTimeout(() => {
-    element.classList.remove('hidden')
+    element.classList.remove("hidden")
   }, time * 1000)
 }
 
@@ -99,7 +99,7 @@ const RenderGame = props => (
               gameId={props.game.id}
               roundsWon={[]}
               actionName={
-                includes('DISCARD', props.game.myAvailableActions) ? 'DISCARD' : 'PLAY_CARD'
+                includes("DISCARD", props.game.myAvailableActions) ? "DISCARD" : "PLAY_CARD"
               }
               firstCardSuit={props.game.firstCardSuit}
             />
@@ -127,9 +127,9 @@ const RenderGame = props => (
           <div key={player.email}>
             <h3>
               {player.nickname ? player.nickname : player.email}
-              {props.game.dealer === player.email && ' (J)'}
-              {player.availableActions.length > 0 && ' (V)'}
-              {player.declaredPlayer && ' (P)'}
+              {props.game.dealer === player.email && " (J)"}
+              {player.availableActions.length > 0 && " (V)"}
+              {player.declaredPlayer && " (P)"}
             </h3>
             <div className="row">
               <div className="col-md-4 col-xs-4">Toiminnot:</div>

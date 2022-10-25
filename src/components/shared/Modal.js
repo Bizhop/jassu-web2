@@ -1,24 +1,24 @@
-import React from 'react'
-import ReactModal from 'react-modal'
+import React from "react"
+import ReactModal from "react-modal"
 
 const modalStyles = {
   overlay: {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     zIndex: 9,
   },
   content: {
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    right: '0',
-    overflow: 'auto',
-    WebkitOverflowScrolling: 'touch',
-    outline: 'none',
+    position: "absolute",
+    top: "0",
+    left: "0",
+    right: "0",
+    overflow: "auto",
+    WebkitOverflowScrolling: "touch",
+    outline: "none",
   },
 }
 
@@ -30,8 +30,8 @@ const Modal = props => (
     isOpen={props.isOpen}
     onRequestClose={props.onRequestClose}
     onAfterOpen={props.onAfterOpen}
-    className={{ base: props.customClass ? props.customClass : 'modal-dialog' }}
-    overlayClassName={{ base: '' }}
+    className={{ base: props.customClass ? props.customClass : "modal-dialog" }}
+    overlayClassName={{ base: "" }}
   >
     <div className="modal-content">
       <div className="modal-header">

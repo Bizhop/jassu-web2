@@ -1,5 +1,5 @@
-import React from 'react'
-import Select from 'react-select'
+import React from "react"
+import Select from "react-select"
 
 export const RenderTextInput = ({ input, label, type, meta: { touched, error } }) => (
   <div className="form-group form-inline">

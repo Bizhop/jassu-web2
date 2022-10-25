@@ -1,6 +1,13 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, UPDATE_SUCCESS, GOOGLE_LOGIN_FAIL, AUTO_LOGIN_SUCCESS } from './userActions'
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT,
+  UPDATE_SUCCESS,
+  GOOGLE_LOGIN_FAIL,
+  AUTO_LOGIN_SUCCESS,
+} from "./userActions"
 
-import { pathOr } from 'ramda'
+import { pathOr } from "ramda"
 
 const initialState = {
   email: null,
@@ -16,7 +23,7 @@ const resetToken = () => {
 }
 
 const userReducer = (state = initialState, action) => {
-  const user = pathOr({}, ['payload', 'data'], action)
+  const user = pathOr({}, ["payload", "data"], action)
   switch (action.type) {
     case LOGOUT:
     case LOGIN_FAILURE:

@@ -1,10 +1,10 @@
-import React from 'react'
-import { path } from 'ramda'
-import { connect } from 'react-redux'
+import React from "react"
+import { path } from "ramda"
+import { connect } from "react-redux"
 import { GoogleLogin } from "@react-oauth/google"
 
-import { login, update, googleLoginError } from '../user/userActions'
-import UpdateUserForm from '../user/UpdateUserForm'
+import { login, update, googleLoginError } from "../user/userActions"
+import UpdateUserForm from "../user/UpdateUserForm"
 
 const DashContainer = props => (
   <div className="container">
@@ -26,19 +26,15 @@ const DashContainer = props => (
         </div>
       </div>
     ) : (
-      <GoogleLogin
-        onSuccess={props.login}
-        onError={props.loginError}
-        useOneTap
-      />
+      <GoogleLogin onSuccess={props.login} onError={props.loginError} useOneTap />
     )}
     {props.error && console.log(props.error)}
   </div>
 )
 
 const mapStateToProps = state => ({
-  user: path(['user'], state),
-  error: path(['user', 'error'], state),
+  user: path(["user"], state),
+  error: path(["user", "error"], state),
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -47,7 +43,4 @@ const mapDispatchToProps = dispatch => ({
   updateUser: form => dispatch(update(form)),
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(DashContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(DashContainer)

@@ -1,12 +1,12 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Navigate, useLocation } from 'react-router-dom'
-import { path, includes, keys, values, without } from 'ramda'
-import SockJsClient from 'react-stomp'
+import React from "react"
+import { connect } from "react-redux"
+import { Navigate, useLocation } from "react-router-dom"
+import { path, includes, keys, values, without } from "ramda"
+import SockJsClient from "react-stomp"
 
-import { getGame, joinGame, action, showAllCards } from './kirvesActions'
-import RenderGame from './renderGame'
-import { SvgImage } from '../shared/images'
+import { getGame, joinGame, action, showAllCards } from "./kirvesActions"
+import RenderGame from "./renderGame"
+import { SvgImage } from "../shared/images"
 
 const ActionButton = props => (
   <div className="col-md-2 col-xs-2">
@@ -28,7 +28,7 @@ const ActionButton = props => (
 )
 
 const SuitSelector = props => {
-  const suits = without([props.currentTrump], ['CLUBS', 'SPADES', 'HEARTS', 'DIAMONDS'])
+  const suits = without([props.currentTrump], ["CLUBS", "SPADES", "HEARTS", "DIAMONDS"])
   return (
     <div>
       <h3>Valitse valtti</h3>
@@ -53,7 +53,7 @@ const KirvesGame = props => (
       <div>
         <SockJsClient
           url={process.env.WEB_SOCKET_URL}
-          topics={['/topic/refresh']}
+          topics={["/topic/refresh"]}
           onMessage={msg => {
             if (msg == props.game.id) {
               props.refresh(props.game.id)
@@ -69,7 +69,7 @@ const KirvesGame = props => (
               </button>
             </div>
           )}
-          {includes('DEAL', props.game.myAvailableActions) && (
+          {includes("DEAL", props.game.myAvailableActions) && (
             <ActionButton
               action={props.action}
               actionName="DEAL"
@@ -77,7 +77,7 @@ const KirvesGame = props => (
               label="Jaa"
             />
           )}
-          {includes('FOLD', props.game.myAvailableActions) && (
+          {includes("FOLD", props.game.myAvailableActions) && (
             <ActionButton
               action={props.action}
               actionName="FOLD"
@@ -85,7 +85,7 @@ const KirvesGame = props => (
               label="Mene pakkaan"
             />
           )}
-          {includes('CUT', props.game.myAvailableActions) && (
+          {includes("CUT", props.game.myAvailableActions) && (
             <div>
               <ActionButton
                 action={props.action}
@@ -104,7 +104,7 @@ const KirvesGame = props => (
               )}
             </div>
           )}
-          {includes('ACE_OR_TWO_DECISION', props.game.myAvailableActions) && (
+          {includes("ACE_OR_TWO_DECISION", props.game.myAvailableActions) && (
             <div>
               <ActionButton
                 action={props.action}
@@ -122,7 +122,7 @@ const KirvesGame = props => (
               />
             </div>
           )}
-          {includes('SPEAK', props.game.myAvailableActions) && (
+          {includes("SPEAK", props.game.myAvailableActions) && (
             <div>
               <ActionButton
                 action={props.action}
@@ -147,7 +147,7 @@ const KirvesGame = props => (
               />
             </div>
           )}
-          {includes('SPEAK_SUIT', props.game.myAvailableActions) && (
+          {includes("SPEAK_SUIT", props.game.myAvailableActions) && (
             <SuitSelector
               action={props.action}
               actionName="SPEAK_SUIT"
@@ -193,17 +193,18 @@ const KirvesGame = props => (
           </div>
         </div>
       </div>
-    ) : getGameIdAndGame(props.getGame)}
+    ) : (
+      getGameIdAndGame(props.getGame)
+    )}
     {!props.user.email && <Navigate to="/" />}
   </div>
 )
 
-function getGameIdAndGame(getGame)  {
+function getGameIdAndGame(getGame) {
   const location = useLocation()
-  var id = location.pathname.split('/').pop()
+  var id = location.pathname.split("/").pop()
   getGame(id)
 }
-
 
 const ScoreRow = props => (
   <tr>
@@ -214,10 +215,10 @@ const ScoreRow = props => (
 )
 
 const mapStateToProps = state => ({
-  user: path(['user'], state),
-  error: path(['user', 'error'], state),
-  game: path(['kirves', 'game'], state),
-  cardsVisible: path(['kirves', 'cardsVisible'], state),
+  user: path(["user"], state),
+  error: path(["user", "error"], state),
+  game: path(["kirves", "game"], state),
+  cardsVisible: path(["kirves", "cardsVisible"], state),
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -225,10 +226,7 @@ const mapDispatchToProps = dispatch => ({
   refresh: gameId => dispatch(getGame(gameId)),
   action: params => dispatch(action(params)),
   showAllCards: () => dispatch(showAllCards()),
-  getGame: gameId => dispatch(getGame(gameId))
+  getGame: gameId => dispatch(getGame(gameId)),
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(KirvesGame)
+export default connect(mapStateToProps, mapDispatchToProps)(KirvesGame)
