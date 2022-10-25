@@ -19,7 +19,7 @@ const KirvesContainer = props => (
         </button>
       </div>
       <div className="col-md-3 col-xs-3">
-        <SvgImage name="refresh" width="20" height="20" onClick={() => props.refreshGames()} />
+        <SvgImage name="refresh" width="20" height="20" onClick={() => props.getGames()} />
       </div>
     </div>
     <table className="table table-striped">
@@ -151,7 +151,7 @@ const KirvesContainer = props => (
       </div>
     )}
     {!props.user.email && <Navigate to="/" />}
-    {!props.gamesFetched && props.getGames()}
+    {!props.gamesFetched && props.getGames() && null}
   </div>
 )
 
@@ -168,7 +168,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  refreshGames: () => dispatch(getGames()),
   init: () => dispatch(init()),
   deleteGame: gameId => dispatch(deleteGame(gameId)),
   getLog: params => dispatch(getLog(params)),
