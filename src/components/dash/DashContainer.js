@@ -2,33 +2,34 @@ import React from "react"
 import { path } from "ramda"
 import { connect } from "react-redux"
 import { GoogleLogin } from "@react-oauth/google"
+import { Alert, Box, Grid } from "@mui/material"
 
 import { login, update, googleLoginError } from "../user/userActions"
 import UpdateUserForm from "../user/UpdateUserForm"
 
-const DashContainer = props => (
-  <div className="container">
-    {props.user.email ? (
-      <div>
+export const DashContainer = ({ user, error, updateUser, login, loginError }) => (
+  <div>
+    {user.email ? (
+      <Box sx={{ flexGrow: 1 }}>
         <h1>Tervetuloa!</h1>
-        <div className="row">
-          <div className="col-md-2">Email</div>
-          <div className="col-md-5">{props.user.email}</div>
-        </div>
-        <div className="row">
-          <div className="col-md-2">Nickname</div>
-          <div className="col-md-5">{props.user.nickname}</div>
-        </div>
-        <div className="row" style={{ marginTop: 20 }}>
-          <div className="col-md-6">
-            <UpdateUserForm onSubmit={props.updateUser} user={props.user} />
-          </div>
-        </div>
-      </div>
+        <Grid container spacing={1}>
+          <Grid item md={2}><strong>Email</strong></Grid>
+          <Grid item md={5}>{user.email}</Grid>
+        </Grid>
+        <Grid container spacing={1}>
+          <Grid item md={2}><strong>Nickname</strong></Grid>
+          <Grid item md={5}>{user.nickname}</Grid>
+        </Grid>
+        <Grid container spacing={1}>
+          <Grid item md={4}>
+            <UpdateUserForm onSubmit={updateUser} user={user} />
+          </Grid>
+        </Grid>
+      </Box>
     ) : (
-      <GoogleLogin onSuccess={props.login} onError={props.loginError} useOneTap />
+      <GoogleLogin onSuccess={login} onError={loginError} useOneTap />
     )}
-    {props.error && console.log(props.error)}
+    {error && <Alert severity="error">{error}</Alert>}
   </div>
 )
 
