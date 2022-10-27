@@ -37,8 +37,7 @@ img.on-table {
 
 img.card-back {
   position: absolute;
-  top: 0;
-  height: 100%;
+  left: 8px;
 }
 
 img.hidden {
@@ -53,9 +52,9 @@ img.opaque50 {
   opacity: 50%;
 }
 
-div#kirves-container {
+div.kirves-container {
   background-color: mediumseagreen;
-  padding-bottom: 10px;
+  padding: 10px;
 }
 
 div.rai-spinner {

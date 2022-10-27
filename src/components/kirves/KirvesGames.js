@@ -1,51 +1,59 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-import { check, del, SvgImage } from "../shared/images"
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, IconButton, Tooltip } from "@mui/material"
+import CheckIcon from '@mui/icons-material/Check'
+import ListIcon from '@mui/icons-material/List'
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 
 import { formatString } from "../shared/dateFormat"
 
-const KirvesGames = ({ games, user, getLog, deleteGame }) => (
-  <table className="table table-striped">
-    <thead>
-      <tr>
-        <th>Peli</th>
-        <th>Pvm</th>
-        <th>Pelaajia</th>
-        <th>Voi liittyä</th>
-        <th />
-        <th />
-      </tr>
-    </thead>
-    <tbody>
-      {games.map(game => (
-        <tr key={`game-${game.id}`}>
-          <td>
-            <NavLink to={`/kirves/${game.id}`} className="nav-link nav-item">
-              {game.id}
-            </NavLink>
-          </td>
-          <td>{formatString(game.createdAt)}</td>
-          <td>{game.players}</td>
-          <td>{game.canJoin && <img src={check} width="10" height="10" />}</td>
-          <td>
-            {user.email === game.admin.email && (
-              <SvgImage
-                name="log"
-                width="30"
-                height="30"
-                onClick={() => getLog({ gameId: game.id, handId: game.lastHandId })}
-              />
-            )}
-          </td>
-          <td>
-            {user.email === game.admin.email && (
-              <img src={del} width="10" height="10" onClick={() => deleteGame(game.id)} />
-            )}
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-)
+const KirvesGames = ({ games, user, getLog, deleteGame }) =>
+  <TableContainer component={Paper}>
+    <Table size="small">
+      <TableHead>
+        <TableRow>
+          <TableCell>Peli</TableCell>
+          <TableCell>Pvm</TableCell>
+          <TableCell>Pelaajia</TableCell>
+          <TableCell>Voi liittyä</TableCell>
+          <TableCell />
+          <TableCell />
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {games.map(game => (
+          <TableRow key={`game-${game.id}`}>
+            <TableCell>
+              <NavLink to={`/kirves/${game.id}`}>
+                {game.id}
+              </NavLink>
+            </TableCell>
+            <TableCell>{formatString(game.createdAt)}</TableCell>
+            <TableCell>{game.players}</TableCell>
+            <TableCell>{game.canJoin && <CheckIcon />}</TableCell>
+            <TableCell>
+              {user.email === game.admin.email && (
+                <Tooltip title="Avaa loki">
+                  <IconButton onClick={() => getLog({ gameId: game.id, handId: game.lastHandId })}>
+                    <ListIcon />
+                  </IconButton>
+                </Tooltip>
+              )}
+            </TableCell>
+            <TableCell>
+              {user.email === game.admin.email && (
+                <Tooltip title="Poista peli">
+                  <IconButton onClick={() => deleteGame(game.id)}>
+                    <DeleteForeverIcon />
+                  </IconButton>
+                </Tooltip>
+              )}
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </TableContainer>
+
 
 export default KirvesGames
