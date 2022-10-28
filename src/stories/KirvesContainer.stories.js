@@ -16,14 +16,16 @@ const baseData = {
   getReplay: data => alert("Get replay, data: " + JSON.stringify(data)),
   restoreGame: data => alert("Restore game, data: " + JSON.stringify(data)),
   getGames: () => alert("Get games"),
-  gamesFetched: true
+  gamesFetched: true,
 }
 
 export default {
-  title: "Containers/Kirves"
+  title: "Containers/Kirves",
 }
 
 export const initial = () => <KirvesContainer {...baseData} />
 export const error = () => <KirvesContainer {...baseData} error="Some random error!" />
 export const withLog = () => <KirvesContainer {...baseData} logVisible selectedLogIndex={0} />
-export const withLogAndReplay = () => <KirvesContainer {...baseData} logVisible selectedLogIndex={2} replay={game} />
+export const withLogAndReplay = () => (
+  <KirvesContainer {...baseData} logVisible selectedLogIndex={2} replay={game} />
+)

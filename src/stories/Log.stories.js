@@ -8,8 +8,24 @@ const restoreGame = data => alert("restoreGame, data: " + JSON.stringify(data))
 
 export default {
   title: "Components/Log",
-  component: Log
+  component: Log,
 }
 
-export const logIndex0 = () => <Log logId={logId} logItems={logItems} selectedLogIndex={0} getReplay={getReplay} restoreGame={restoreGame} />
-export const logIndex2 = () => <Log logId={logId} logItems={logItems} selectedLogIndex={2} getReplay={getReplay} restoreGame={restoreGame} />
+export const logIndex0 = () => (
+  <Log
+    logId={logId}
+    logItems={logItems}
+    selectedLogIndex={0}
+    getReplay={getReplay}
+    restoreGame={restoreGame}
+  />
+)
+export const logIndex2 = () => (
+  <Log
+    logId={logId}
+    logItems={logItems}
+    selectedLogIndex={2}
+    getReplay={getReplay}
+    restoreGame={restoreGame}
+  />
+)

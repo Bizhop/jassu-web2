@@ -7,8 +7,10 @@ const updateUser = () => alert("Update user")
 
 export default {
   title: "Containers/Dash",
-  component: DashContainer
+  component: DashContainer,
 }
 
 export const loggedIn = () => <DashContainer user={user} updateUser={updateUser} />
-export const error = () => <DashContainer user={user} updateUser={updateUser} error={"Error text!"} />
+export const error = () => (
+  <DashContainer user={user} updateUser={updateUser} error={"Error text!"} />
+)

@@ -6,7 +6,7 @@ const logout = () => alert("Logout")
 
 export default {
   title: "Containers/Header",
-  component: Header
+  component: Header,
 }
 
 export const loggedIn = () => <Header loggedIn={true} logout={logout} />

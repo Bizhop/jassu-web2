@@ -1,11 +1,22 @@
 import React from "react"
-import { Box, TableContainer, Table, Paper, TableHead, TableBody, TableRow, TableCell, IconButton, Icon } from "@mui/material"
+import {
+  Box,
+  TableContainer,
+  Table,
+  Paper,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  IconButton,
+  Icon,
+} from "@mui/material"
 import CheckIcon from "@mui/icons-material/Check"
 import PreviewIcon from "@mui/icons-material/Preview"
 
 import translate from "../shared/translate"
 
-const Log = ({ logId, logItems, selectedLogIndex, getReplay, restoreGame }) =>
+const Log = ({ logId, logItems, selectedLogIndex, getReplay, restoreGame }) => (
   <Box>
     <h2>
       Loki (peli: {logId.gameId} käsi: {logId.handId})
@@ -77,5 +88,6 @@ const Log = ({ logId, logItems, selectedLogIndex, getReplay, restoreGame }) =>
       </Table>
     </TableContainer>
   </Box>
+)
 
 export default Log

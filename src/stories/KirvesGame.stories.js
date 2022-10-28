@@ -11,7 +11,7 @@ const baseData = {
   showAllCards: () => alert("Show all cards"),
   getGame: () => {},
   user,
-  socketDisabled: true
+  socketDisabled: true,
 }
 
 const gameSpeak = {
@@ -20,9 +20,9 @@ const gameSpeak = {
   players: [
     {
       ...game.players[0],
-      availableActions: ["SPEAK"]
-    }
-  ]
+      availableActions: ["SPEAK"],
+    },
+  ],
 }
 
 const gameSpeakSuit = {
@@ -31,14 +31,14 @@ const gameSpeakSuit = {
   players: [
     {
       ...game.players[0],
-      availableActions: ["SPEAK_SUIT"]
-    }
-  ]
+      availableActions: ["SPEAK_SUIT"],
+    },
+  ],
 }
 
 export default {
   title: "Containers/KirvesGame",
-  component: KirvesGame
+  component: KirvesGame,
 }
 
 export const gameStart = () => <KirvesGame {...baseData} game={game} />

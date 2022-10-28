@@ -1,13 +1,23 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, IconButton, Tooltip } from "@mui/material"
-import CheckIcon from '@mui/icons-material/Check'
-import ListIcon from '@mui/icons-material/List'
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
+import {
+  TableContainer,
+  Paper,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  IconButton,
+  Tooltip,
+} from "@mui/material"
+import CheckIcon from "@mui/icons-material/Check"
+import ListIcon from "@mui/icons-material/List"
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever"
 
 import { formatString } from "../shared/dateFormat"
 
-const KirvesGames = ({ games, user, getLog, deleteGame }) =>
+const KirvesGames = ({ games, user, getLog, deleteGame }) => (
   <TableContainer component={Paper}>
     <Table size="small">
       <TableHead>
@@ -24,9 +34,7 @@ const KirvesGames = ({ games, user, getLog, deleteGame }) =>
         {games.map(game => (
           <TableRow key={`game-${game.id}`}>
             <TableCell>
-              <NavLink to={`/kirves/${game.id}`}>
-                {game.id}
-              </NavLink>
+              <NavLink to={`/kirves/${game.id}`}>{game.id}</NavLink>
             </TableCell>
             <TableCell>{formatString(game.createdAt)}</TableCell>
             <TableCell>{game.players}</TableCell>
@@ -54,6 +62,6 @@ const KirvesGames = ({ games, user, getLog, deleteGame }) =>
       </TableBody>
     </Table>
   </TableContainer>
-
+)
 
 export default KirvesGames

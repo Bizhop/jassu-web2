@@ -22,7 +22,11 @@ const makeButton = props => {
   const buttonProps = omit(["type", "label"], props)
   switch (props.type) {
     case "button":
-      return <Button {...buttonProps} variant="contained" >{props.label}</Button>
+      return (
+        <Button {...buttonProps} variant="contained">
+          {props.label}
+        </Button>
+      )
     case "action":
       return <ActionButton {...buttonProps} label={props.label} />
     default:
@@ -30,16 +34,27 @@ const makeButton = props => {
   }
 }
 
-const ButtonWrapper = props =>
+const ButtonWrapper = props => (
   <Grid item md={2}>
     {makeButton(props)}
   </Grid>
+)
 
-export const KirvesGame = ({ user, game, cardsVisible, join, refresh, action, showAllCards, getGame, socketDisabled }) =>
+export const KirvesGame = ({
+  user,
+  game,
+  cardsVisible,
+  join,
+  refresh,
+  action,
+  showAllCards,
+  getGame,
+  socketDisabled,
+}) => (
   <div>
-    {game ?
+    {game ? (
       <Box sx={{ flexGrow: 1 }} className="kirves-container">
-        {!socketDisabled &&
+        {!socketDisabled && (
           <SockJsClient
             url={process.env.WEB_SOCKET_URL}
             topics={["/topic/refresh"]}
@@ -49,17 +64,13 @@ export const KirvesGame = ({ user, game, cardsVisible, join, refresh, action, sh
               }
             }}
           />
-        }
+        )}
         <h1>Kirves (Peli {game.id})</h1>
         <Grid container spacing={1}>
-          {game.canJoin &&
-            <ButtonWrapper
-              type="button"
-              label="Liity peliin"
-              onClick={() => join(game.id)}
-            />
-          }
-          {includes("DEAL", game.myAvailableActions) &&
+          {game.canJoin && (
+            <ButtonWrapper type="button" label="Liity peliin" onClick={() => join(game.id)} />
+          )}
+          {includes("DEAL", game.myAvailableActions) && (
             <ButtonWrapper
               type="action"
               action={action}
@@ -67,8 +78,8 @@ export const KirvesGame = ({ user, game, cardsVisible, join, refresh, action, sh
               gameId={game.id}
               label="Jaa"
             />
-          }
-          {includes("FOLD", game.myAvailableActions) &&
+          )}
+          {includes("FOLD", game.myAvailableActions) && (
             <ButtonWrapper
               type="action"
               action={action}
@@ -76,8 +87,8 @@ export const KirvesGame = ({ user, game, cardsVisible, join, refresh, action, sh
               gameId={game.id}
               label="Mene pakkaan"
             />
-          }
-          {includes("CUT", game.myAvailableActions) &&
+          )}
+          {includes("CUT", game.myAvailableActions) && (
             <ButtonWrapper
               type="action"
               action={action}
@@ -85,8 +96,8 @@ export const KirvesGame = ({ user, game, cardsVisible, join, refresh, action, sh
               gameId={game.id}
               label="Nosta"
             />
-          }
-          {includes("CUT", game.myAvailableActions) && game.canDeclineCut &&
+          )}
+          {includes("CUT", game.myAvailableActions) && game.canDeclineCut && (
             <ButtonWrapper
               type="action"
               action={action}
@@ -95,8 +106,8 @@ export const KirvesGame = ({ user, game, cardsVisible, join, refresh, action, sh
               declineCut="true"
               label="Älä nosta"
             />
-          }
-          {includes("ACE_OR_TWO_DECISION", game.myAvailableActions) &&
+          )}
+          {includes("ACE_OR_TWO_DECISION", game.myAvailableActions) && (
             <ButtonWrapper
               action={action}
               actionName="ACE_OR_TWO_DECISION"
@@ -104,8 +115,8 @@ export const KirvesGame = ({ user, game, cardsVisible, join, refresh, action, sh
               keepExtraCard="true"
               label="Pidä"
             />
-          }
-          {includes("ACE_OR_TWO_DECISION", game.myAvailableActions) &&
+          )}
+          {includes("ACE_OR_TWO_DECISION", game.myAvailableActions) && (
             <ButtonWrapper
               type="action"
               action={action}
@@ -114,8 +125,8 @@ export const KirvesGame = ({ user, game, cardsVisible, join, refresh, action, sh
               keepExtraCard="false"
               label="Hylkää"
             />
-          }
-          {includes("SPEAK", game.myAvailableActions) &&
+          )}
+          {includes("SPEAK", game.myAvailableActions) && (
             <ButtonWrapper
               type="action"
               action={action}
@@ -124,8 +135,8 @@ export const KirvesGame = ({ user, game, cardsVisible, join, refresh, action, sh
               speak="KEEP"
               label="Päältä"
             />
-          }
-          {includes("SPEAK", game.myAvailableActions) &&
+          )}
+          {includes("SPEAK", game.myAvailableActions) && (
             <ButtonWrapper
               type="action"
               action={action}
@@ -134,8 +145,8 @@ export const KirvesGame = ({ user, game, cardsVisible, join, refresh, action, sh
               speak="CHANGE"
               label="Värjäisin"
             />
-          }
-          {includes("SPEAK", game.myAvailableActions) &&
+          )}
+          {includes("SPEAK", game.myAvailableActions) && (
             <ButtonWrapper
               type="action"
               action={action}
@@ -144,7 +155,7 @@ export const KirvesGame = ({ user, game, cardsVisible, join, refresh, action, sh
               speak="PASS"
               label="Viitenä"
             />
-          }
+          )}
           {includes("SPEAK_SUIT", game.myAvailableActions) && (
             <SuitSelector
               action={action}
@@ -172,10 +183,12 @@ export const KirvesGame = ({ user, game, cardsVisible, join, refresh, action, sh
           </Grid>
         </Grid>
       </Box>
-      : (getGameIdAndGame(getGame) && null)
-    }
+    ) : (
+      getGameIdAndGame(getGame) && null
+    )}
     {!user.email && <Navigate to="/" />}
   </div>
+)
 
 const mapStateToProps = state => ({
   user: path(["user"], state),

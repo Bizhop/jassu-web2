@@ -17,65 +17,52 @@ export const games = [
 export const game = {
   players: [
     {
-      email: 'ville.piispa@gmail.com',
-      nickname: 'Ville',
+      email: "ville.piispa@gmail.com",
+      nickname: "Ville",
       cardsInHand: 5,
       playedCards: [],
       roundsWon: [],
-      availableActions: [
-        'PLAY_CARD'
-      ],
+      availableActions: ["PLAY_CARD"],
       extraCard: null,
       declaredPlayer: true,
       folded: false,
-      speak: 'KEEP'
-    }
+      speak: "KEEP",
+    },
   ],
-  messages: [
-    "Test message 1",
-    "Test message 2"
-  ],
+  messages: ["Test message 1", "Test message 2"],
   cardsInDeck: 47,
-  turn: 'ville.piispa@gmail.com',
-  dealer: 'ville.piispa@gmail.com',
-  myCardsInHand: [
-    'QC',
-    'QH',
-    '4S',
-    '4D',
-    'QS'
-  ],
+  turn: "ville.piispa@gmail.com",
+  dealer: "ville.piispa@gmail.com",
+  myCardsInHand: ["QC", "QH", "4S", "4D", "QS"],
   myExtraCard: null,
-  myAvailableActions: [
-    'PLAY_CARD'
-  ],
+  myAvailableActions: ["PLAY_CARD"],
   canJoin: false,
   canDeclineCut: false,
-  trumpCard: '3S',
-  trump: 'SPADES',
-  cutCard: '',
-  secondCutCard: '',
+  trumpCard: "3S",
+  trump: "SPADES",
+  cutCard: "",
+  secondCutCard: "",
   id: 2,
   playersTotal: 1,
-  firstCardSuit: '',
+  firstCardSuit: "",
   scores: {
     Ville: 0,
     Vesa: 2,
-    Terhi: 1
+    Terhi: 1,
   },
   scoresHistory: [
     {
       Ville: 3,
       Vesa: 2,
-      Terhi: 3
+      Terhi: 3,
     },
     {
       Ville: 1,
       Vesa: 3,
-      Terhi: 3
-    }
+      Terhi: 3,
+    },
   ],
-  numOfPlayedRounds: 0
+  numOfPlayedRounds: 0,
 }
 
 export const game2 = {
@@ -86,14 +73,14 @@ export const game2 = {
       ...game.players[0],
       cardsInHand: 0,
       playedCards: game.myCardsInHand,
-      roundsWon: [0,1,2,3,4],
-      availableActions: []
-    }
+      roundsWon: [0, 1, 2, 3, 4],
+      availableActions: [],
+    },
   ],
   myCardsInHand: [],
   scores: {
     Ville: 1,
     Vesa: 2,
-    Terhi: 1
-  }
+    Terhi: 1,
+  },
 }

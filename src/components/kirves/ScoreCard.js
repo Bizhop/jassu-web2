@@ -1,6 +1,15 @@
 import React from "react"
 import { values, keys } from "ramda"
-import { TableContainer, Paper, Table, TableHead, TableBody, TableRow, TableCell, Box } from "@mui/material"
+import {
+  TableContainer,
+  Paper,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Box,
+} from "@mui/material"
 
 const ScoreRow = ({ scores, unique, borders }) => (
   <TableRow sx={borders ? { border: 2, borderColor: "lightblue" } : {}}>
@@ -10,7 +19,7 @@ const ScoreRow = ({ scores, unique, borders }) => (
   </TableRow>
 )
 
-const ScoreCard = ({ game }) =>
+const ScoreCard = ({ game }) => (
   <Box>
     <TableContainer component={Paper}>
       <Table>
@@ -25,14 +34,11 @@ const ScoreCard = ({ game }) =>
           {game.scoresHistory.map((history, i) => (
             <ScoreRow scores={values(history)} unique={i} key={`history-${i}`} />
           ))}
-          <ScoreRow
-            scores={game.scores}
-            unique={0}
-            borders
-          />
+          <ScoreRow scores={game.scores} unique={0} borders />
         </TableBody>
       </Table>
     </TableContainer>
   </Box>
+)
 
 export default ScoreCard

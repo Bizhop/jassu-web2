@@ -5,7 +5,7 @@ import { SvgImage } from "../shared/images"
 import translate from "../shared/translate"
 import Cards from "./Cards"
 
-const Player = ({ player, game, cardsVisible }) =>
+const Player = ({ player, game, cardsVisible }) => (
   <Box>
     <h3>
       {player.nickname ? player.nickname : player.email}
@@ -14,24 +14,38 @@ const Player = ({ player, game, cardsVisible }) =>
       {player.declaredPlayer && " (P)"}
     </h3>
     <Grid container spacing={1}>
-      <Grid item md={2}>Toiminnot:</Grid>
       <Grid item md={2}>
-        {player.availableActions.map(action => <div key={action}>{translate(action)} </div>)}
+        Toiminnot:
+      </Grid>
+      <Grid item md={2}>
+        {player.availableActions.map(action => (
+          <div key={action}>{translate(action)} </div>
+        ))}
       </Grid>
     </Grid>
     <Grid container spacing={1}>
-      <Grid item md={2}>Kortteja kädessä:</Grid>
-      <Grid item md={1}>{player.cardsInHand}</Grid>
+      <Grid item md={2}>
+        Kortteja kädessä:
+      </Grid>
+      <Grid item md={1}>
+        {player.cardsInHand}
+      </Grid>
     </Grid>
     {player.speak && (
       <Grid container spacing={1}>
-        <Grid item md={2}>Puhe:</Grid>
-        <Grid item md={1}>{translate(player.speak)}</Grid>
+        <Grid item md={2}>
+          Puhe:
+        </Grid>
+        <Grid item md={1}>
+          {translate(player.speak)}
+        </Grid>
       </Grid>
     )}
     {player.extraCard && (
       <Grid container spacing={1}>
-        <Grid item md={2}>Ylimääräinen kortti:</Grid>
+        <Grid item md={2}>
+          Ylimääräinen kortti:
+        </Grid>
         <Grid item md={1}>
           <SvgImage name={player.extraCard} />
         </Grid>
@@ -41,12 +55,13 @@ const Player = ({ player, game, cardsVisible }) =>
       <Cards
         cards={player.playedCards}
         roundsWon={player.roundsWon}
-        action={() => { }}
+        action={() => {}}
         numOfPlayedRounds={game.numOfPlayedRounds}
         cardsVisible={cardsVisible}
         scale={2}
       />
     </Box>
   </Box>
+)
 
 export default Player

@@ -13,5 +13,7 @@ export default {
   component: KirvesGames,
 }
 
-export const asAdmin = () => <KirvesGames games={games} user={user} getLog={getLog} deleteGame={deleteGame} />
+export const asAdmin = () => (
+  <KirvesGames games={games} user={user} getLog={getLog} deleteGame={deleteGame} />
+)
 export const asUser = () => <KirvesGames games={games} user={other} />

@@ -7,7 +7,7 @@ const updateUser = data => alert("Update user, data: " + JSON.stringify(data))
 
 export default {
   title: "Components/UpdateUserForm",
-  component: UpdateUserForm
+  component: UpdateUserForm,
 }
 
 export const form = () => <UpdateUserForm onSubmit={updateUser} user={user} />

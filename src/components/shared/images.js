@@ -28,10 +28,10 @@ export const SvgImage = props => {
   if (props.name == null || props.name.length == 0) {
     return null
   }
-  if(!props.height) {
+  if (!props.height) {
     props = assoc("height", 200)(props)
   }
-  if(!props.width) {
+  if (!props.width) {
     props = assoc("width", 140)(props)
   }
   return <img {...props} src={prop(props.name, svgImages)} />

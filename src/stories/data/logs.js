@@ -1,52 +1,52 @@
 export const logId = {
   gameId: 2,
-  handId: 0
+  handId: 0,
 }
 
 export const logItems = [
   {
     user: {
-      email: 'ville.piispa@gmail.com',
+      email: "ville.piispa@gmail.com",
       jwt: null,
-      nickname: 'Ville'
+      nickname: "Ville",
     },
     input: {
-      action: 'DEAL',
+      action: "DEAL",
       index: 0,
       keepExtraCard: false,
       suit: null,
       declineCut: false,
-      speak: null
-    }
+      speak: null,
+    },
   },
   {
     user: {
-      email: 'ville.piispa@gmail.com',
+      email: "ville.piispa@gmail.com",
       jwt: null,
-      nickname: 'Ville'
+      nickname: "Ville",
     },
     input: {
-      action: 'SPEAK',
+      action: "SPEAK",
       index: 0,
       keepExtraCard: false,
       suit: null,
       declineCut: false,
-      speak: 'KEEP'
-    }
+      speak: "KEEP",
+    },
   },
   {
     user: {
-      email: 'ville.piispa@gmail.com',
+      email: "ville.piispa@gmail.com",
       jwt: null,
-      nickname: 'Ville'
+      nickname: "Ville",
     },
     input: {
-      action: 'PLAY_CARD',
+      action: "PLAY_CARD",
       index: 3,
       keepExtraCard: false,
       suit: null,
       declineCut: false,
-      speak: null
-    }
-  }
+      speak: null,
+    },
+  },
 ]

@@ -1,17 +1,19 @@
 import React from "react"
 import { includes } from "ramda"
 import { Grid, Box, Tooltip, IconButton } from "@mui/material"
-import PreviewIcon from '@mui/icons-material/Preview';
+import PreviewIcon from "@mui/icons-material/Preview"
 
 import { SvgImage } from "../shared/images"
 import Cards from "./Cards"
-import Player from "./Player";
+import Player from "./Player"
 
 export const RenderGame = ({ game, isReplay, action, cardsVisible, showAllCards }) => (
   <Box sx={{ flexGrow: 1 }}>
     {game.cutCard && (
       <Grid container spacing={1}>
-        <Grid item md={1}>Nostokortti:</Grid>
+        <Grid item md={1}>
+          Nostokortti:
+        </Grid>
         <Grid item md={2}>
           <SvgImage name={game.cutCard} />
         </Grid>
@@ -23,7 +25,9 @@ export const RenderGame = ({ game, isReplay, action, cardsVisible, showAllCards 
       </Grid>
     )}
     <Grid container spacing={1}>
-      <Grid item md={1}>Valtti:</Grid>
+      <Grid item md={1}>
+        Valtti:
+      </Grid>
       {game.trumpCard && (
         <Grid item md={2}>
           <SvgImage name={game.trumpCard} />
@@ -44,9 +48,7 @@ export const RenderGame = ({ game, isReplay, action, cardsVisible, showAllCards 
             action={action}
             gameId={game.id}
             roundsWon={[]}
-            actionName={
-              includes("DISCARD", game.myAvailableActions) ? "DISCARD" : "PLAY_CARD"
-            }
+            actionName={includes("DISCARD", game.myAvailableActions) ? "DISCARD" : "PLAY_CARD"}
             firstCardSuit={game.firstCardSuit}
           />
         </Box>
@@ -54,7 +56,9 @@ export const RenderGame = ({ game, isReplay, action, cardsVisible, showAllCards 
     )}
     {!isReplay && game.myExtraCard && (
       <Grid container spacing={1}>
-        <Grid item md={1}>Ylimääräinen kortti:</Grid>
+        <Grid item md={1}>
+          Ylimääräinen kortti:
+        </Grid>
         <Grid item md={2}>
           <SvgImage name={game.myExtraCard} />
         </Grid>
@@ -71,7 +75,9 @@ export const RenderGame = ({ game, isReplay, action, cardsVisible, showAllCards 
       )}
     </h2>
     <Box>
-      {game.players.map((player, idx) => <Player key={`player-${idx}`} player={player} game={game} cardsVisible={cardsVisible} />)}
+      {game.players.map((player, idx) => (
+        <Player key={`player-${idx}`} player={player} game={game} cardsVisible={cardsVisible} />
+      ))}
     </Box>
   </Box>
 )

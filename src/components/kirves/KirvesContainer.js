@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { Navigate } from "react-router-dom"
 import { path, pathOr, pick } from "ramda"
 import { Tooltip, IconButton, Box, Grid, Button, Alert } from "@mui/material"
-import RefreshIcon from '@mui/icons-material/Refresh'
+import RefreshIcon from "@mui/icons-material/Refresh"
 
 import { init, getGames, deleteGame, getLog, getReplay, restoreGame } from "./kirvesActions"
 import RenderGame from "./RenderGame"
@@ -15,10 +15,7 @@ export const KirvesContainer = props => (
     <h1>Kirves</h1>
     <Grid container spacing={1}>
       <Grid item md={3}>
-        <Button
-          variant="contained"
-          onClick={() => props.init()}
-        >
+        <Button variant="contained" onClick={() => props.init()}>
           Aloita uusi peli
         </Button>
       </Grid>
@@ -31,14 +28,18 @@ export const KirvesContainer = props => (
       </Grid>
     </Grid>
     <KirvesGames {...pick(["games", "user", "getLog", "deleteGame"], props)} />
-    {props.logVisible && <Log {...pick(["logId", "logItems", "selectedLogIndex", "getReplay", "restoreGame"], props)} />}
+    {props.logVisible && (
+      <Log
+        {...pick(["logId", "logItems", "selectedLogIndex", "getReplay", "restoreGame"], props)}
+      />
+    )}
     {props.replay && (
       <Box className="kirves-container">
         <RenderGame
           game={props.replay}
           isReplay={true}
-          action={() => { }}
-          showAllCards={() => { }}
+          action={() => {}}
+          showAllCards={() => {}}
           cardsVisible={true}
         />
       </Box>

@@ -1,6 +1,6 @@
 import React from "react"
 import { Grid, Box } from "@mui/material"
-import CheckIcon from '@mui/icons-material/Check'
+import CheckIcon from "@mui/icons-material/Check"
 
 import { SvgImage } from "../shared/images"
 
@@ -12,16 +12,15 @@ const BackCard = ({ lastCard }) => {
         element.classList.remove("last-card")
       }
     }, 1500)
-    return <SvgImage
-      name="back"
-      className="card-back last-card"
-      onClick={event => hideForSeconds(event, 1.5)}
-    />
+    return (
+      <SvgImage
+        name="back"
+        className="card-back last-card"
+        onClick={event => hideForSeconds(event, 1.5)}
+      />
+    )
   } else {
-    return <SvgImage
-      name="back"
-      className="card-back"
-    />
+    return <SvgImage name="back" className="card-back" />
   }
 }
 
@@ -33,16 +32,23 @@ const hideForSeconds = (event, time) => {
   }, time * 1000)
 }
 
-const Cards = ({ scale, cards, gameId, action, actionName, roundsWon, cardsVisible, numOfPlayedRounds, firstCardSuit }) => {
+const Cards = ({
+  scale,
+  cards,
+  gameId,
+  action,
+  actionName,
+  roundsWon,
+  cardsVisible,
+  numOfPlayedRounds,
+  firstCardSuit,
+}) => {
   const s = scale || 1
   return (
     <Grid container spacing={1}>
       {cards.map((card, i) => (
         <Grid item md={s} key={`card-${card}`} sx={{ position: "relative" }}>
-          <SvgImage
-            name={card}
-            onClick={() => action({ gameId, action: actionName, index: i })}
-          />
+          <SvgImage name={card} onClick={() => action({ gameId, action: actionName, index: i })} />
           {roundsWon.includes(i) &&
             (cardsVisible ? <CheckIcon /> : <BackCard lastCard={numOfPlayedRounds - 1 == i} />)}
         </Grid>
@@ -50,10 +56,7 @@ const Cards = ({ scale, cards, gameId, action, actionName, roundsWon, cardsVisib
       {firstCardSuit && (
         <Grid item md>
           <Box display="flex" justifyContent="center">
-            <SvgImage
-              name={`Suit${firstCardSuit}`}
-              className="opaque50"
-            />
+            <SvgImage name={`Suit${firstCardSuit}`} className="opaque50" />
           </Box>
         </Grid>
       )}

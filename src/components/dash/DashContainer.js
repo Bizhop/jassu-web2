@@ -13,12 +13,20 @@ export const DashContainer = ({ user, error, updateUser, login, loginError }) =>
       <Box sx={{ flexGrow: 1 }}>
         <h1>Tervetuloa!</h1>
         <Grid container spacing={1}>
-          <Grid item md={2}><strong>Email</strong></Grid>
-          <Grid item md={5}>{user.email}</Grid>
+          <Grid item md={2}>
+            <strong>Email</strong>
+          </Grid>
+          <Grid item md={5}>
+            {user.email}
+          </Grid>
         </Grid>
         <Grid container spacing={1}>
-          <Grid item md={2}><strong>Nickname</strong></Grid>
-          <Grid item md={5}>{user.nickname}</Grid>
+          <Grid item md={2}>
+            <strong>Nickname</strong>
+          </Grid>
+          <Grid item md={5}>
+            {user.nickname}
+          </Grid>
         </Grid>
         <Grid container spacing={1}>
           <Grid item md={4}>
